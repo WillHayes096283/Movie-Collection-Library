@@ -23,21 +23,28 @@ struct movie {
   std::string title;
   std::string director;
   std::string format;
-  int runtime
-  int year;
-  float price;
+  
+  std::string runtime;
+  std::string year;
+  std::string price;
 };
 
 
 class Library {
  private:
-  list<movie> library;
+  std::list<movie> library;
+  
  public:
   Library();
   ~Library();
+  
   void insert_sorted(movie* m);
+  
   void lookup(std::string query);
+  
   void director_search(std::string query);
+  
   void remove(std::string);
+  
   void print();
-}
+};
