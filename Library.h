@@ -24,9 +24,9 @@ struct movie {
   std::string director;
   std::string format;
   
-  std::string runtime;
-  std::string year;
-  std::string price;
+  int runtime;
+  int year;
+  float price;
 };
 
 
@@ -35,16 +35,17 @@ class Library {
   std::list<movie> library;
   
  public:
-  Library();
-  ~Library();
+  void readFile(std::string fName);
   
-  void insert_sorted(movie* m);
+  void writeFile(std::string fName);
   
-  void lookup(std::string query);
+  void insertSorted(movie* m);
   
-  void director_search(std::string query);
+  void directorSearch(std::string name);
+
+  void findMovie(std::string query);
   
-  void remove(std::string);
+  void remove(std::string usrTitle);
   
   void print();
 };
