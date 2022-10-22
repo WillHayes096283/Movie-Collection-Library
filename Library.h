@@ -35,6 +35,7 @@ class Library {
   std::list<movie> library;
   
  public:
+  
   void readFile(std::string fName);
   
   void writeFile(std::string fName);
