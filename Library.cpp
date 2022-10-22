@@ -64,6 +64,23 @@ void Library::remove(string title) {
   cout << "Movie not found; can't remove." << endl;
 }
 
+void Library::directorSearch(string name) {
+  // creates an iterator, then iterates through library
+  list<movie>::iterator it;
+
+  cout << "Movies directed by " << name << ":" << endl;
+  
+  for (it = library.begin(); it != library.end(); it++) {
+    // if the passed director directs a movie, print out that movie's info
+    if (it->director == name) {
+      cout << "\t" << it->title << "(" << it->year << ")" << "\tRuntime: "
+	   << it->runtime << " minutes\tPrice: $" << it->price
+	   << "\tFormat: " << it->format << endl;
+    }
+    
+  }
+}
+    
 void Library::readFile(string fName) {
   movie temp;
   ifstream inFS;
