@@ -1,5 +1,5 @@
 /**
- * @file Library.cpp
+0;95;0c * @file Library.cpp
  * @author William Hayes
  * @date 2022-10-11
  * @brief short
@@ -15,47 +15,63 @@
 
 using namespace std;
 
-void Library::readFile(string fName) { //might use insertSort here to automatically sort when reading files
-  string movieName;
-  string directName;
-  string movieFormat;
-  float moviePrice = 0.0;
-  int time = 0;
-  int yearReleased = 0;
+void Library::insertSorted(movie m) {
+  // if library is empty, push to front
+  if (library.empty()) {
+    library.push_front(m);
+    return;
+  }
 
-  movie temp;
+  // iterate through library to find correct insert position for given m
+  list<movie>::iterator it;
+  for (it = library.begin(); it != library.end(); it++) {
+    // if the current title is > than given m's title, insert there
+    if (it->title > m.title) {
+      library.insert(it, m);
+      return;
+    }
+  }
+
+  // else, push to back
+  library.push_back(m);
+}
+
+void Library::print() {
+  list<movie>::iterator it;
+
+  for (it = library.begin(); it != library.end(); it++) {
+    cout << "'" << it->title << "' ";
+  }
+  cout << endl;
+}
   
+
+void Library::readFile(string fName) {
+  movie temp;
   ifstream inFS;
 
+  // open file with given file name
   inFS.open(fName);
 
-  getline(inFS, movieName);
+  // priming read; read first line
+  getline(inFS, temp.title);
 
   while(inFS) {
-    getline(inFS, directName);
-
-    inFS >> time;
-
+    // read second line
+    getline(inFS, temp.director);
+    // read third line
+    inFS >> temp.runtime;
+    inFS >> temp.format;
+    inFS >> temp.price;
+    inFS >> temp.year;
     inFS.get();
+    
+    //    cout << temp.title << endl << temp.director << endl << temp.runtime << endl << temp.format << endl << temp.price << endl << temp.year << endl << endl;
+    
+    insertSorted(temp);
 
-    getline(inFS, movieFormat);
-
-    inFS >> moviePrice;
-
-    inFS >> yearReleased;
-
-    inFS.get();
-
-    temp.title = movieName;
-    temp.director = directName;
-    temp.runtime = time;
-    temp.format = movieFormat;
-    temp.price = moviePrice;
-    temp.year = yearReleased;
-
-    library.push_back(temp);
-
-    getline(inFS, movieName);
+    // try to read next line; if EOF, will close while loop
+    getline(inFS, temp.title);
   }
 
   inFS.close();
