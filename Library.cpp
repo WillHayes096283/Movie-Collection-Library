@@ -1,5 +1,5 @@
 /**
-0;95;0c * @file Library.cpp
+* @file Library.cpp
  * @author William Hayes
  * @date 2022-10-11
  * @brief short
@@ -45,6 +45,24 @@ void Library::print() {
   cout << endl;
 }
   
+void Library::remove(string title) {
+  // creates an iterator, then iterates through library
+  list<movie>::iterator it;
+
+  for (it = library.begin(); it != library.end(); it++) {
+    // if current title matches passed title to remove, erase it
+    if (it->title == title) {
+      cout << "Removing: '" << title << "'" << endl;
+      library.erase(it);
+      
+      return;
+    }
+    
+  }
+
+  // if movie title not found:
+  cout << "Movie not found; can't remove." << endl;
+}
 
 void Library::readFile(string fName) {
   movie temp;
