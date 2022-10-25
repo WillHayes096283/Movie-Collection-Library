@@ -49,4 +49,5 @@ class Library {
   void remove(std::string usrTitle);
   
   void print();
+  void menu();
 };

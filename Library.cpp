@@ -71,7 +71,9 @@ void Library::directorSearch(string name) {
   cout << "Movies directed by " << name << ":" << endl;
   
   for (it = library.begin(); it != library.end(); it++) {
+
     // if the passed director directs a movie, print out that movie's info
+
     if (it->director == name) {
       cout << "\t" << it->title << "(" << it->year << ")" << "\tRuntime: "
 	   << it->runtime << " minutes\tPrice: $" << it->price
@@ -80,7 +82,26 @@ void Library::directorSearch(string name) {
     
   }
 }
+
+void Library::findMovie(string query) {
+  // creates an iterator, then iterates through library
+  list<movie>::iterator it;
+
+  cout << "Movies that contain '" << query << "':" << endl;
+  
+  for (it = library.begin(); it != library.end(); it++) {
+
+    // if the substring query is found within a movie's title, print it out
     
+    if ( it->title.find(query) != string::npos ) {
+      cout << "\t" << it->title << "(" << it->year << ")" << "\tRuntime: "
+	   << it->runtime << " minutes\tPrice: $" << it->price
+	   << "\tFormat: " << it->format << endl;
+    }
+    
+  }
+}
+
 void Library::readFile(string fName) {
   movie temp;
   ifstream inFS;
@@ -127,4 +148,116 @@ void Library::writeFile(string fName) {
   }
 
   outF.close();
+}
+
+
+void Library::menu() {
+
+  cout << "Welcome to your Movie Library!" << endl;
+  int selection = 0;
+
+  while (selection != 8) {
+    cout << "1. Read from file" << endl
+	 << "2. Write to file" << endl
+	 << "3. Add a movie" << endl
+	 << "4. Remove a movie" << endl
+	 << "5. Search by movie title" << endl
+	 << "6. Search by director" << endl
+	 << "7. Print out library" << endl
+	 << "8. Exit" << endl;
+    
+    cout << "Type the number of your selection: ";
+    cin >> selection;
+
+
+    cout << endl;
+    // runs function based on selection
+    switch (selection) {
+    case 1:
+      {
+	string fname = "";
+
+	cout << "Enter filename to read from: ";
+	cin >> fname;
+
+	this->readFile(fname);
+	break;
+      }
+    case 2:
+      {
+	string fname = "";
+
+	cout << "Enter filename to write to: ";
+	cin >> fname;
+
+	this->writeFile(fname);
+	break;
+      }
+    case 3:
+      {
+	movie m;
+	cout << "Enter the followind details about the movie" << endl;
+	cout << "Movie title: ";
+	cin.get();
+	getline(cin, m.title);
+	cout << "Director name: ";
+	cin.get();
+	getline(cin, m.director);
+	cout << "Runtime (in minutes): ";
+	cin >> m.runtime;
+	cout << "Movie format (DVD, Blu-ray, VHS, Digital): ";
+	cin >> m.format;
+	cout << "Price (i.e. 11.99): ";
+	cin >> m.price;
+	cout << "Year: ";
+	cin >> m.year;
+
+	this->insertSorted(m);
+
+	break;
+      }
+    case 4:
+      {
+	string title = "";
+	cout << "Enter name of movie to remove: ";
+	cin.get();
+	getline(cin, title);
+
+	this->remove(title);
+
+	break;
+      }
+    case 5:
+      {
+	string title = "";
+	cout << "Search (enter movie name): ";
+	cin.get();
+	getline(cin, title);
+
+	this->findMovie(title);
+
+	break;
+      }
+    case 6:
+      {
+	string name = "";
+	cout << "Search (enter director's name): ";
+	cin.get();
+	getline(cin, name);
+
+	this->directorSearch(name);
+
+	break;
+      }
+    case 7:
+      this->print();
+      break;
+    default:
+      break;
+    }
+
+    cout << endl;
+    
+  }
+  
 }

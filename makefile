@@ -35,7 +35,7 @@ $(TARGET): 	main.o Library.o
 ## Library.o
 # Requires Library header and implementation file.
 Library.o:  Library.cpp Library.h
-    $(CC) $(CFLAGS) -c Library.cpp
+	$(CC) $(CFLAGS) -c Library.cpp
 
 ## main.o
 # Requires main.cpp and all header files.
