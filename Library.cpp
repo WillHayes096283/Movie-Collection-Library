@@ -144,7 +144,7 @@ void Library::writeFile(string fName) {
   for(it = library.begin(); it != library.end(); it++) {
     outF << it -> title << endl;
     outF << it -> director << endl;
-    outF << it -> runtime << it -> format << it -> price << it -> year << endl;
+    outF << it -> runtime  << " " << it -> format << " " <<  it -> price << " " <<  it -> year << endl;
   }
 
   outF.close();
