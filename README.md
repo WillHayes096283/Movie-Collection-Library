@@ -7,9 +7,9 @@
 In this assignment, we created a library class to store a collection of movies. In runtime, a user can modify the movie library and read/write to and from a file. We used an internal stl list to store the movies, and all of a movie's info is stored within a *movie struct*.
 
 # TODO
- - [ ] implement a menu system
+ - [X] implement a menu system
  - [ ] finish documentation
- - [ ] clean and setup main.cpp
+ - [X] clean and setup main.cpp
 
 # The Library Class
 The Library class uses a stl linked list. However, we are using the list to store movies in alphabetical order. To do this, we implemented a sorted insert function. It uses an iterator to locate where a new movie should be, then insert it into the corrct postion.
