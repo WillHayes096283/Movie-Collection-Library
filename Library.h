@@ -40,7 +40,7 @@ class Library {
   
   void writeFile(std::string fName);
   
-  void insertSorted(movie* m);
+  void insertSorted(movie m);
   
   void directorSearch(std::string name);
 
@@ -49,4 +49,5 @@ class Library {
   void remove(std::string usrTitle);
   
   void print();
+  void menu();
 };
