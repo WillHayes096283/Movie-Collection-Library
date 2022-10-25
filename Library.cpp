@@ -201,7 +201,6 @@ void Library::menu() {
 	cin.get();
 	getline(cin, m.title);
 	cout << "Director name: ";
-	cin.get();
 	getline(cin, m.director);
 	cout << "Runtime (in minutes): ";
 	cin >> m.runtime;
