@@ -2,9 +2,9 @@
 * @file Library.cpp
  * @author William Hayes
  * @date 2022-10-11
- * @brief short
+ * @brief implementations for Library class.
  * 
- * long
+ * Method implementations for the Library class.
  */
 
 #include <iostream>
@@ -39,10 +39,19 @@ void Library::insertSorted(movie m) {
 void Library::print() {
   list<movie>::iterator it;
 
+  int temp = 1;
+  
   for (it = library.begin(); it != library.end(); it++) {
-    cout << "'" << it->title << "' ";
+
+    cout << fixed << setprecision(2)
+	 << temp << "). Title: " << it->title << "\n"
+         << "\t Director: " << it->director << "\n"
+	 << "\t Year: " << it->year << "\n"
+         << "\t Runtime: " << it->runtime << " minutes" << "\n"
+	 << setw(4) << right << "Format: " << it->format
+	 << "\t Price: $" << it->price << endl << endl; 
+    temp++;
   }
-  cout << endl;
 }
   
 void Library::remove(string title) {
@@ -68,18 +77,25 @@ void Library::directorSearch(string name) {
   // creates an iterator, then iterates through library
   list<movie>::iterator it;
 
-  cout << "Movies directed by " << name << ":" << endl;
+  int temp = 1;
+  
+  cout << "Movies directed by " << name << ":" << endl << endl;
   
   for (it = library.begin(); it != library.end(); it++) {
 
     // if the passed director directs a movie, print out that movie's info
 
     if (it->director == name) {
-      cout << "\t" << it->title << "(" << it->year << ")" << "\tRuntime: "
-	   << it->runtime << " minutes\tPrice: $" << it->price
-	   << "\tFormat: " << it->format << endl;
-    }
-    
+      
+      cout << fixed << setprecision(2)
+	   << temp << "). Title: " << it->title << "\n"
+	   << "\t Director: " << it->director << "\n"
+	   << "\t Year: " << it->year << "\n"
+	   << "\t Runtime: " << it->runtime << " minutes" << "\n"
+	   << setw(4) << right << "Format: " << it->format
+	   << "\t Price: $" << it->price << endl << endl; 
+      temp++;
+    }   
   }
 }
 
@@ -87,18 +103,25 @@ void Library::findMovie(string query) {
   // creates an iterator, then iterates through library
   list<movie>::iterator it;
 
-  cout << "Movies that contain '" << query << "':" << endl;
+  int temp = 1;
+  
+  cout << "Movies that contain '" << query << "':" << endl << endl;
   
   for (it = library.begin(); it != library.end(); it++) {
 
     // if the substring query is found within a movie's title, print it out
     
     if ( it->title.find(query) != string::npos ) {
-      cout << "\t" << it->title << "(" << it->year << ")" << "\tRuntime: "
-	   << it->runtime << " minutes\tPrice: $" << it->price
-	   << "\tFormat: " << it->format << endl;
+      
+      cout << fixed << setprecision(2)
+	   << temp << "). Title: " << it->title << "\n"
+	   << "\t Director: " << it->director << "\n"
+	   << "\t Year: " << it->year << "\n"
+	   << "\t Runtime: " << it->runtime << " minutes" << "\n"
+	   << setw(4) << right << "Format: " << it->format
+	   << "\t Price: $" << it->price << endl << endl;
+      temp++;
     }
-    
   }
 }
 

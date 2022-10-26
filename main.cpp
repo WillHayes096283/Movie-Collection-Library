@@ -2,9 +2,9 @@
  * @file main.cpp
  * @author William Hayes
  * @date 2022-10-11
- * @brief short
+ * @brief Library class user interface.
  * 
- * long
+ * A program that creates a Library object and allows the user to interface with it.
  */
 #include <iostream>
 #include "Library.h"
