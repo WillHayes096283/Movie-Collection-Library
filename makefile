@@ -45,4 +45,4 @@ main.o: 	main.cpp Library.h
 ## clean
 # Removes all unnecessary files including objects (*.o) and emacs backup (*~) files.
 clean:
-	$(RM) $(TARGET) -f *.o *~ ~#
+	$(RM) $(TARGET) -f *.o *~ *#
