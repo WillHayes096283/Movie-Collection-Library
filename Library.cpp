@@ -45,11 +45,11 @@ void Library::print() {
 
     cout << fixed << setprecision(2)
 	 << temp << "). Title: " << it->title << "\n"
-         << "\t Director: " << it->director << "\n"
-	 << "\t Year: " << it->year << "\n"
-         << "\t Runtime: " << it->runtime << " minutes" << "\n"
-	 << setw(4) << right << "Format: " << it->format
-	 << "\t Price: $" << it->price << endl << endl; 
+         << "\tDirector: " << it->director << "\n"
+	 << "\tYear: " << it->year << "\n"
+         << "\tRuntime: " << it->runtime << " minutes\n"
+	 << setw(4) << right << "\tFormat: " << it->format
+	 << "\tPrice: $" << it->price << endl << endl; 
     temp++;
   }
 }
@@ -84,18 +84,18 @@ void Library::directorSearch(string name) {
   for (it = library.begin(); it != library.end(); it++) {
 
     // if the passed director directs a movie, print out that movie's info
-
+    
     if (it->director == name) {
       
       cout << fixed << setprecision(2)
-	   << temp << "). Title: " << it->title << "\n"
-	   << "\t Director: " << it->director << "\n"
-	   << "\t Year: " << it->year << "\n"
-	   << "\t Runtime: " << it->runtime << " minutes" << "\n"
-	   << setw(4) << right << "Format: " << it->format
+	   << temp << ". " << it->title << "(" << it->year
+	   << ")\n" << "\tRuntime: " << it->runtime << " minutes\n"
+	   << setw(4) << right << "\tFormat: " << it->format
 	   << "\t Price: $" << it->price << endl << endl; 
+
       temp++;
-    }   
+    }
+    
   }
 }
 
@@ -115,11 +115,11 @@ void Library::findMovie(string query) {
       
       cout << fixed << setprecision(2)
 	   << temp << "). Title: " << it->title << "\n"
-	   << "\t Director: " << it->director << "\n"
-	   << "\t Year: " << it->year << "\n"
-	   << "\t Runtime: " << it->runtime << " minutes" << "\n"
-	   << setw(4) << right << "Format: " << it->format
-	   << "\t Price: $" << it->price << endl << endl;
+	   << "\tDirector: " << it->director << "\n"
+	   << "\tYear: " << it->year << "\n"
+	   << "\tRuntime: " << it->runtime << " minutes\n"
+	   << setw(4) << right << "\tFormat: " << it->format
+	   << "\tPrice: $" << it->price << endl << endl;
       temp++;
     }
   }
@@ -178,7 +178,7 @@ void Library::menu() {
 
   cout << "Welcome to your Movie Library!" << endl;
   int selection = 0;
-
+  
   while (selection != 8) {
     cout << "1. Read from file" << endl
 	 << "2. Write to file" << endl
@@ -191,8 +191,7 @@ void Library::menu() {
     
     cout << "Type the number of your selection: ";
     cin >> selection;
-
-
+   
     cout << endl;
     // runs function based on selection
     switch (selection) {
@@ -279,6 +278,15 @@ void Library::menu() {
     }
 
     cout << endl;
+
+    /*
+     * if the user types in something other than an int, this
+     * fixes the cin buffer; stops infinite loops
+     */
+    if (cin.fail()) {
+      cin.clear();
+      cin.ignore(256, '\n');
+    }
     
   }
   
