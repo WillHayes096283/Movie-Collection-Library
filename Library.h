@@ -7,6 +7,9 @@
  * This declares the methods and data members for the Library class and movie structure.
  */
 
+#ifndef LIBRARY_H
+#define LIBRARY_H
+
 #include <string>
 #include <list>
 
@@ -138,3 +141,5 @@ class Library {
  */
   void menu();
 };
+
+#endif //LIBRARY_H
