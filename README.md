@@ -1,6 +1,6 @@
 # Movie Collection Library
 
-* **Names:** Jackson Horton William Hayes, Kenneth Wallace
+* **Names:** Jackson Horton, William Hayes, Kenneth Wallace
 
 * **Date:** 10-22-2022
 
@@ -13,7 +13,7 @@ The remove function, similarly, uses an iterator to remove a movie from the libr
 
 # Menu-driven interaction
 We implemented a command-line menu driver function within the Library class.
-It simply, gets an integer from the user and uses a switch statement to interact with a Library object.
+It simply gets an integer from the user and uses a switch statement to interact with a Library object.
 The switch statement will call the appropriate member function (and will sometimes perform some extra logic).
 
 <img width="391" alt="cli" src="https://user-images.githubusercontent.com/59177560/198178671-57c5b2c4-6326-4e0f-95bd-e2aced85abdc.png">
