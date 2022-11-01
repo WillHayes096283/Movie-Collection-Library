@@ -29,3 +29,9 @@ The movie title is on the first line and the director is on the second line.
 On the third line (from left to right) are the movie's runtime (`99`), the movie's format (`DVD`), the price (`11.99`), and the year released (`2003`).
 
 There can be multiple movies stored in a library file. To see an example of this, look at the provided [movies.txt](https://github.com/WillHayes096283/Movie-Collection-Library/blob/master/movies.txt)
+
+## Notes
+* Used linked list iterators to help with methods like print and remove.
+* Chose to include insertSorted in the readFile method to automatically sort the linked list even if the file being read isn't sorted properly.
+* Used switch statements for more organized and readable code than if we used if-else conditionals.
+* Included the movie library menu and it's functions in the Library class to avoid making functions (and more documentation) inside main.cpp.
